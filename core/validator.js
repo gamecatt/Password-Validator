@@ -20,14 +20,27 @@ const toJsonArray = (data) => {
     let conditionPasword = line.split(/ |: /);
     keyDataArray.push({
       char: conditionPasword[0],
-      range: conditionPasword[1],
+      range: conditionPasword[1].split("-"),
       password: conditionPasword[2],
     });
   });
+
+  console.log(keyDataArray);
 };
+
+let valid = [];
 
 const validate = () => {
   keyDataArray.map((item) => {
-    console.log(item);
+    let count = 0;
+    for (let m of item.password) {
+      if (item.char.includes(m)) {
+        count++;
+      }
+    }
+    if (count >= item.range[0] && count <= item.range[1]) {
+      valid.push(item);
+    }
   });
+  console.log(valid);
 };
