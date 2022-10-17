@@ -4,17 +4,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Js Validator</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Password validator</h1>
-    <input
-      onchange="getLocalFile(this)"
-      id="file"
-      type="file"
-      placeholder="Password txt"
-    />
-    <button onclick="validate()">Check for valid</button>
+    <div class="flexbox">
+      <div class="form">
+        <h3>Input:</h3>
+        <div id="localInput">
+          <p>From local storage</p>
+          <label class="file-input__label" for="file">Upload file</label>
+          <input
+            onchange="getLocalFile(this)"
+            type="file"
+            name="Local storage"
+            id="file"
+            class="file-input__input"
+            placeholder="Local storage"
+          />
+        </div>
+
+        <!-- <div id="urlInput">
+        <label for="url">type file url: <br /></label>
+        <p>file from url</p>
+        <input
+          onchange="getWebFile(this)"
+          type="url"
+          name="Url source"
+          id="url"
+        />
+      </div> -->
+
+        <p>Start</p>
+        <button onclick="validate()" type="button" id="start">Get valid</button>
+      </div>
+      <!-- ToDo: 
+      *Style for Card
+    -->
+
+      <div class="card">
+        <h3>Output:</h3>
+        <p id="result"></p>
+      </div>
+    </div>
     <script src="validator.js"></script>
   </body>
 </html>
