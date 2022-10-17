@@ -1,5 +1,4 @@
 const outputElem = document.getElementById("result");
-let outputLine = 0;
 let keyDataArray = [];
 
 const getLocalFile = (localFile) => {
@@ -14,16 +13,14 @@ const getLocalFile = (localFile) => {
     try {
       toJsonArray(reader.result);
     } catch (error) {
-      console.log("Please enter a correct data.\n" + error);
-      alert(`Make sure the file format is .txt and you can
-also check the sequence of data in the file.
-
-Example of a valid string:
-x 2-4: example`);
+      console.log(`Please enter a correct data.\n${error}`);
+      alert(
+        `Make sure the file format is .txt and you can \nalso check the sequence of data in the file.\nExample of a valid string:\nx 2-4: example`
+      );
     }
   };
   reader.onerror = () => {
-    console.log("Reader error : ", reader.error);
+    console.log("Reader error : " + reader.error);
   };
 };
 
@@ -36,7 +33,6 @@ const toJsonArray = (data) => {
       password: conditionPasword[2],
     });
   });
-
   console.log(keyDataArray);
 };
 
@@ -50,16 +46,22 @@ const validate = () => {
       }
     }
     if (count >= item.range[0] && count <= item.range[1]) {
-      valid.push(item.password);
+      valid.push(item);
     }
   });
+  renderResult(valid);
+};
 
-  let result = `Valid - ${valid.length};      Wrong - ${
-    keyDataArray.length - valid.length
-  };\n`;
+const renderResult = (item) => {
+  console.log(item);
+  outputElem.innerHTML += `<span><b>Total:</b> ${item.length} passwords!</span><br/>`;
+  outputElem.innerHTML += "<span><b>Successful:<b/></span><br/>";
 
-  outputElem.innerHTML +=
-    result +
-    `<br />-------------------------------------------------<br /> Passwords : ${valid} <br />`;
-  console.log(result + `Passwords : ${valid}`);
+  for (let i = 0; i < item.length; i++) {
+    const pass = item[i].password;
+    outputElem.innerHTML += `<li>${item[i].char} ${
+      item[i].range[0] + "-" + item[i].range[1]
+    }: ${pass}</li>`;
+  }
+  outputElem.innerHTML += `<br/><hr/><br/>`;
 };

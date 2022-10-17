@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap");
 
 * {
   font-family: "Raleway", sans-serif !important;
@@ -6,7 +7,13 @@
   margin: 0;
   color: #edf6f9;
 }
-
+ul,
+ol,
+li {
+  text-decoration: none;
+  list-style-type: none;
+  padding-left: 5px;
+}
 body {
   margin: 14px;
   background-color: #83c5be;
@@ -21,7 +28,7 @@ h3 {
 p {
   margin-block: 8px;
   font-weight: normal;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .flexbox {
@@ -30,7 +37,7 @@ p {
 }
 
 .form {
-  width: 25%;
+  width: 30%;
 }
 
 .card {
@@ -91,17 +98,17 @@ p {
 #result:hover {
   color: rgba(0, 0, 0, 0.3);
 }
-/* For hide/show horizontal scroll */
 #result {
   background: #554971;
   color: rgba(0, 0, 0, 0);
   -webkit-text-fill-color: #edf6f9;
   transition: 0.5s;
-}
-/* Just styles */
-#result {
   overflow: auto;
-  max-height: 200px;
+  max-height: 360px;
   padding-inline-end: 8px;
   margin-bottom: 0;
+}
+#result > * {
+  font-family: "Noto Sans Mono", monospace !important;
+  font-size: 0.9em;
 }
